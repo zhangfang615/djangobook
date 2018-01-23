@@ -1,16 +1,16 @@
 class TokenModel:
     def __init__ (self, userId, token):
-        self.__secretuserId = userId
-        self.__secrettoken = token
+        self.__userId = userId
+        self.__token = token
 
     def getUserId (self):
-        return self.__secretuserId
+        return self.__userId
 
-    def setUserId(self, __secretuserId) :
-        self.__secretuserId = __secretuserId
+    def setUserId(self, __userId) :
+        self.__userId = __userId
 
     def getToken(self):
-        return self.__secrettoken
+        return self.__token
 
-    def setToken (self, __secrettoken):
-        self.__secrettoken = __secrettoken
+    def setToken (self, __token):
+        self.__token = __token
