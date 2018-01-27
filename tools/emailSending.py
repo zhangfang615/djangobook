@@ -2,7 +2,8 @@ import smtplib
 import email.mime.multipart
 import email.mime.text
 from djangobook.settings import *
-
+from django.core.cache import cache
+from djangobook.settings import TOKEN_EXPIRE_TIME
 # def sendEmail(Email):
 #
 #     msg = email.mime.multipart.MIMEMultipart()
@@ -60,6 +61,7 @@ def sendEmail(receiveEmail):
         smtpObj = smtplib.SMTP_SSL(mail_host, 465)  # 启用SSL发信, 端口一般是465
         smtpObj.login(mail_user, mail_pass)  # 登录验证
         smtpObj.sendmail(sender, receivers, message.as_string())  # 发送
+        cache.set(receiveEmail,content,VRIFICATION_EXPIRE_TIME)
         return content, 0
     except smtplib.SMTPException as e:
         if type(e) == smtplib.SMTPHeloError:
