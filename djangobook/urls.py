@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Users.verificationViews import emailVerification, current_datetime, hours_ahead, display_meta, gettest, phoneRegister, emailRegister, userLogin
+from Users.verificationViews import *
 from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^emailVerification/([^/]+)/$', emailVerification),
+    url('^emailVerification', emailVerification),
+    url('^emailExist', emailExist),
+    url('^tokenCheck', tokenCheck),
     url(r'^display/$', display_meta),
     url('^time/$', current_datetime),
     url('^gettest/', gettest),
